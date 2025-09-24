@@ -12,5 +12,6 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   "com.lihaoyi" %% "requests" % "0.8.0",
   "com.github.kevinsawicki" % "http-request" % "6.0",
-  "com.lihaoyi" %% "upickle" % "3.1.3"
+  "com.lihaoyi" %% "upickle" % "3.1.3",
+  "log4j" % "log4j" % "1.2.17"
 )
