@@ -2,7 +2,8 @@ package com.example
 
 // Import the necessary components from the libraries we added in build.sbt
 import requests.get
-import http-request.get
+import com.github.kevinsawicki.http.HttpRequest
+
 import upickle.default._
 
 // Define a case class that matches the structure of the JSON we expect to receive.
@@ -22,20 +23,21 @@ object MainApp extends App {
   try {
     // 1. Use the 'http-request' library to make an HTTP GET request.
     // The response body is returned as a string.
-    /*
-    HttpRequest req = http-request.get(url)
+    
+    val req = HttpRequest.get(url)
     val response = req.body()
-    val responseBody = response.text()
-    println(s"Successfully fetched data. Raw JSON: $responseBody")
-    */
-    val response = get(url)
-    val responseBody = response.text()
-    println(s"Successfully fetched data. Raw JSON: $responseBody")
+    // val responseBody = response.text()
+    println(s"Successfully fetched data. Raw JSON: $response")
+    
+    // val response = get(url)
+    // val responseBody = response.text()
+    // println(s"Successfully fetched data. Raw JSON: $responseBody")
 
 
     // 2. Use the 'upickle' library to parse the JSON string into our Todo case class.
     // The read[T](jsonString) function handles the deserialization.
-    val todoItem = read[Todo](responseBody)
+    val todoItem = read[Todo](response)
+    //val todoItem = read[Todo](responseBody)
 
     // 3. Print the organized data from the parsed case class.
     println("\n--- Parsed Todo Item ---")
