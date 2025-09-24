@@ -1,6 +1,7 @@
 package com.example
 
 // Import the necessary components from the libraries we added in build.sbt
+import requests.get
 import http-request.get
 import upickle.default._
 
@@ -21,10 +22,16 @@ object MainApp extends App {
   try {
     // 1. Use the 'http-request' library to make an HTTP GET request.
     // The response body is returned as a string.
+    /*
     HttpRequest req = http-request.get(url)
     val response = req.body()
     val responseBody = response.text()
     println(s"Successfully fetched data. Raw JSON: $responseBody")
+    */
+    val response = get(url)
+    val responseBody = response.text()
+    println(s"Successfully fetched data. Raw JSON: $responseBody")
+
 
     // 2. Use the 'upickle' library to parse the JSON string into our Todo case class.
     // The read[T](jsonString) function handles the deserialization.
